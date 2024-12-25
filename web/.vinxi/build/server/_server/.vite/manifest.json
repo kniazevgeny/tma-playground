@@ -1,0 +1,8 @@
+{
+  "virtual:$vinxi/handler/server": {
+    "file": "entry.mjs",
+    "name": "entry",
+    "src": "virtual:$vinxi/handler/server",
+    "isEntry": true
+  }
+}

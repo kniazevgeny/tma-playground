@@ -1,0 +1,1 @@
+import{jsxs as t,jsx as o}from"react/jsx-runtime";import{Outlet as n}from"@tanstack/react-router";const m=function(){return t("div",{className:"p-2",children:[o("div",{children:"I'm a layout"}),o("div",{children:o(n,{})})]})};export{m as component};

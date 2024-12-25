@@ -1,0 +1,8 @@
+{
+  "virtual:$vinxi/handler/api": {
+    "file": "api.js",
+    "name": "api",
+    "src": "virtual:$vinxi/handler/api",
+    "isEntry": true
+  }
+}
