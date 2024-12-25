@@ -1,12 +1,19 @@
 {
   "version": 2,
-  "routes": [
+  "builds": [
     {
-      "handle": "filesystem"
+      "src": "server/index.mjs",
+      "use": "@vercel/node"
     },
     {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
       "src": "/(.*)",
-      "dest": "/__nitro"
+      "dest": "server/index.mjs"
     }
   ]
 }
