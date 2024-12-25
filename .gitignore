@@ -3,6 +3,7 @@
 .env
 .env*.local
 output
+.output
 dist
 target
 .idea

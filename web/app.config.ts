@@ -1,7 +1,6 @@
 import { defineConfig } from "@tanstack/start/config"
 import tsConfigPaths from "vite-tsconfig-paths"
 import { nodePolyfills } from "vite-plugin-node-polyfills"
-import { PluginOption } from "vite"
 
 export default defineConfig({
   routers: {
