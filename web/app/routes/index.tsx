@@ -1,10 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router"
-import {
-  init,
-  mainButton,
-  setMainButtonParams,
-  useLaunchParams,
-} from "@telegram-apps/sdk-react"
+import * as sdk from "@telegram-apps/sdk-react"
 import { useEffect } from "react"
 
 export const Route = createFileRoute("/")({
@@ -14,16 +9,17 @@ export const Route = createFileRoute("/")({
 function PlaygroundPage() {
   let tma: any = null
   try {
-    tma = useLaunchParams()
+    tma = sdk.useLaunchParams()
   } catch (e) {
     console.log("The app runs outside of the telegram")
   }
 
   useEffect(() => {
-    init()
+    sdk.init()
 
     if (tma) {
       console.log(tma)
+      console.log(Object.keys(sdk))
     }
   }, [tma])
 
@@ -32,12 +28,12 @@ function PlaygroundPage() {
       alert("The app runs outside of the telegram")
       return
     }
-    mainButton.mount()
-    setMainButtonParams({
+    sdk.mainButton.mount()
+    sdk.setMainButtonParams({
       isEnabled: true,
       text: "тест",
       isVisible: true,
-      textColor: "#f00000",
+      textColor: "#fff5e1",
       backgroundColor: "#111",
       hasShineEffect: true,
     })
