@@ -19,7 +19,15 @@ function PlaygroundPage() {
 
     if (tma) {
       console.log(tma)
+      console.log(sdk)
       console.log(Object.keys(sdk))
+      console.log(typeof sdk.setMainButtonParams)
+      console.log(typeof sdk.setMainButtonParams({}))
+      // Static TypeScript Type Check
+      type SetMainButtonParamsReturnType = ReturnType<typeof sdk.setMainButtonParams>;
+      // Check if the inferred type matches `number`
+      type IsReturnTypeNumber = SetMainButtonParamsReturnType extends number ? true : false;
+      console.log('IsReturnTypeNumber (Static):', (true as IsReturnTypeNumber)); // true or false
     }
   }, [tma])
 
