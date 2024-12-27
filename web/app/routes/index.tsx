@@ -21,7 +21,9 @@ function PlaygroundPage() {
   ])
   const [selected, setSelected] = useState<Selection>(new Set([1]))
   const [selectedPerset, setSelectedPreset] = useState<Selection>(new Set([-1]))
-  const [presets, setPresets] = useState<{ name: string; id: number, exec: () => any }[]>([
+  const [presets, setPresets] = useState<
+    { name: string; id: number; exec: () => any }[]
+  >([
     { name: "main button", id: 0, exec: setBottomButton },
     { name: "main button + secondary", id: 1, exec: set2BottomButtons },
     { name: "back button", id: 2, exec: setBackButton },
@@ -32,10 +34,14 @@ function PlaygroundPage() {
   useEffect(() => {
     try {
       sdk.init()
+
       sdk.mainButton.unmount()
       sdk.secondaryButton.unmount()
+      sdk.backButton.hide()
       sdk.backButton.unmount()
+      sdk.settingsButton.hide()
       sdk.settingsButton.unmount()
+
       sdk.miniApp.mount()
     } catch (e) {}
     setSdkKeys(Object.keys(sdk).map((el, id) => ({ name: el, id: id })))
@@ -46,7 +52,7 @@ function PlaygroundPage() {
   }, [tma])
 
   useEffect(() => {
-    if (Array.from(selectedPerset)[0] as number > 0)
+    if ((Array.from(selectedPerset)[0] as number) > 0)
       presets[Array.from(selectedPerset)[0] as number].exec()
   }, [selectedPerset])
 
@@ -81,6 +87,24 @@ function PlaygroundPage() {
       backgroundColor: "#111",
       hasShineEffect: false,
     })
+
+    sdk.setMainButtonParams({
+      isEnabled: true,
+      text: "убрать кнопки",
+      isVisible: true,
+      textColor: "#fff5e1",
+      backgroundColor: "#111",
+      hasShineEffect: false,
+    })
+    sdk.mainButton.onClick(() => {
+      sdk.setSecondaryButtonParams({
+        isVisible: false,
+      })
+
+      sdk.setMainButtonParams({
+        isVisible: false,
+      })
+    })
   }
 
   function setBackButton() {
@@ -90,7 +114,7 @@ function PlaygroundPage() {
     }
     sdk.backButton.mount()
     sdk.backButton.show()
-    sdk.backButton.onClick(() => alert('back btn clicked'))
+    sdk.backButton.onClick(() => sdk.backButton.hide())
   }
 
   function setSettingsButton() {
@@ -100,7 +124,7 @@ function PlaygroundPage() {
     }
     sdk.settingsButton.mount()
     sdk.settingsButton.show()
-    sdk.settingsButton.onClick(() => alert('settings btn clicked'))
+    sdk.settingsButton.onClick(() => alert("settings btn clicked"))
   }
 
   function setHeaderColor() {
@@ -108,7 +132,7 @@ function PlaygroundPage() {
       alert("The app runs outside of the telegram")
       return
     }
-    sdk.setMiniAppHeaderColor('#f98e29')
+    sdk.setMiniAppHeaderColor("#f98e29")
   }
 
   return (
