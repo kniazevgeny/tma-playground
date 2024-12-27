@@ -55,7 +55,7 @@ function PlaygroundPage() {
   }
 
   useEffect(() => {
-    if ((Array.from(selectedPerset)[0] as number) > 0)
+    if ((Array.from(selectedPerset)[0] as number) >= 0)
       presets[Array.from(selectedPerset)[0] as number].exec()
   }, [selectedPerset])
 
@@ -108,6 +108,8 @@ function PlaygroundPage() {
       sdk.setMainButtonParams({
         isVisible: false,
       })
+
+      sdk.mainButton.onClick(() => {})
     })
   }
 
