@@ -24,13 +24,18 @@ function PlaygroundPage() {
   const [presets, setPresets] = useState<{ name: string; id: number, exec: () => any }[]>([
     { name: "main button", id: 0, exec: setBottomButton },
     { name: "main button + secondary", id: 1, exec: set2BottomButtons },
-    { name: "back button", id: 2, exec: () => {} },
-    { name: "settings button", id: 3, exec: () => {} },
+    { name: "back button", id: 2, exec: setBackButton },
+    { name: "settings button", id: 3, exec: setSettingsButton },
+    { name: "header color orange", id: 4, exec: setHeaderColor },
   ])
 
   useEffect(() => {
     try {
       sdk.init()
+      sdk.mainButton.unmount()
+      sdk.secondaryButton.unmount()
+      sdk.backButton.unmount()
+      sdk.settingsButton.unmount()
     } catch (e) {}
     setSdkKeys(Object.keys(sdk).map((el, id) => ({ name: el, id: id })))
 
@@ -75,6 +80,34 @@ function PlaygroundPage() {
       backgroundColor: "#111",
       hasShineEffect: false,
     })
+  }
+
+  function setBackButton() {
+    if (!tma) {
+      alert("The app runs outside of the telegram")
+      return
+    }
+    sdk.backButton.mount()
+    sdk.backButton.show()
+    sdk.backButton.onClick(() => alert('back btn clicked'))
+  }
+
+  function setSettingsButton() {
+    if (!tma) {
+      alert("The app runs outside of the telegram")
+      return
+    }
+    sdk.settingsButton.mount()
+    sdk.settingsButton.show()
+    sdk.settingsButton.onClick(() => alert('settings btn clicked'))
+  }
+
+  function setHeaderColor() {
+    if (!tma) {
+      alert("The app runs outside of the telegram")
+      return
+    }
+    sdk.setMiniAppHeaderColor('#f98e29')
   }
 
   return (
