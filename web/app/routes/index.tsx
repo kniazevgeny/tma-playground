@@ -35,13 +35,8 @@ function PlaygroundPage() {
     try {
       sdk.init()
       sdk.miniApp.mount()
-
-      sdk.unmountMainButton()
-      sdk.unmountSecondaryButton()
-      sdk.backButton.hide()
-      sdk.backButton.unmount()
-      sdk.settingsButton.hide()
-      sdk.settingsButton.unmount()
+      sdk.mainButton.mount()
+      sdk.secondaryButton.mount()
     } catch (e) {}
     setSdkKeys(Object.keys(sdk).map((el, id) => ({ name: el, id: id })))
 
@@ -49,6 +44,15 @@ function PlaygroundPage() {
       console.log(tma)
     }
   }, [tma])
+
+  window.onclose = () => {
+    sdk.unmountMainButton()
+    sdk.unmountSecondaryButton()
+    sdk.backButton.hide()
+    sdk.backButton.unmount()
+    sdk.settingsButton.hide()
+    sdk.settingsButton.unmount()
+  }
 
   useEffect(() => {
     if ((Array.from(selectedPerset)[0] as number) > 0)
@@ -60,7 +64,6 @@ function PlaygroundPage() {
       alert("The app runs outside of the telegram")
       return
     }
-    sdk.mainButton.mount()
 
     sdk.setMainButtonParams({
       isEnabled: true,
@@ -71,7 +74,6 @@ function PlaygroundPage() {
       hasShineEffect: false,
     })
 
-    sdk.secondaryButton.mount()
     sdk.setSecondaryButtonParams({ isVisible: false })
   }
 
