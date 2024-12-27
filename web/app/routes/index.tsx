@@ -61,6 +61,7 @@ function PlaygroundPage() {
       return
     }
     sdk.mainButton.mount()
+
     sdk.setMainButtonParams({
       isEnabled: true,
       text: "test",
@@ -69,6 +70,9 @@ function PlaygroundPage() {
       backgroundColor: "#111",
       hasShineEffect: false,
     })
+
+    sdk.secondaryButton.mount()
+    sdk.setSecondaryButtonParams({ isVisible: false })
   }
 
   function set2BottomButtons() {
@@ -77,7 +81,6 @@ function PlaygroundPage() {
       return
     }
     setBottomButton()
-    sdk.secondaryButton.mount()
     sdk.setSecondaryButtonParams({
       isEnabled: false,
       text: "тест disabled",
@@ -138,8 +141,8 @@ function PlaygroundPage() {
     <div className="dark pt-4 min-h-screen bg-bg text-fg font-serif flex flex-col justify-center items-center">
       Hello there
       <Select
-        label="Design software"
-        placeholder="Select a software"
+        label="Manual method testing"
+        placeholder="Select a method"
         className="max-w-[400px]"
       >
         <Select.Trigger />
@@ -151,6 +154,7 @@ function PlaygroundPage() {
           )}
         </Select.List>
       </Select>
+      <p>Or select a preset below:</p>
       <ListBox
         selectedKeys={selectedPerset}
         onSelectionChange={setSelectedPreset}
