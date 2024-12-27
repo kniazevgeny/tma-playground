@@ -63,11 +63,11 @@ function PlaygroundPage() {
     sdk.mainButton.mount()
     sdk.setMainButtonParams({
       isEnabled: true,
-      text: "тест",
+      text: "test",
       isVisible: true,
       textColor: "#fff5e1",
       backgroundColor: "#111",
-      hasShineEffect: true,
+      hasShineEffect: false,
     })
   }
 
