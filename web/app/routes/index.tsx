@@ -36,6 +36,7 @@ function PlaygroundPage() {
       sdk.secondaryButton.unmount()
       sdk.backButton.unmount()
       sdk.settingsButton.unmount()
+      sdk.miniApp.mount()
     } catch (e) {}
     setSdkKeys(Object.keys(sdk).map((el, id) => ({ name: el, id: id })))
 
