@@ -1,6 +1,6 @@
 {
   "D:/Files/playground/tma-playground/web/app/styles/app.css": {
-    "file": "assets/app-eFpPO7oP.css",
+    "file": "assets/app-CxEV8qsk.css",
     "src": "D:/Files/playground/tma-playground/web/app/styles/app.css"
   },
   "app/routes/_layout.tsx?tsr-split": {
@@ -34,7 +34,7 @@
     "isDynamicEntry": true
   },
   "app/routes/index.tsx?tsr-split": {
-    "file": "assets/index-CwcDcgRg.js",
+    "file": "assets/index-DnXvASIm.js",
     "name": "index",
     "src": "app/routes/index.tsx?tsr-split",
     "isDynamicEntry": true
@@ -54,7 +54,7 @@
       "app/routes/_layout/_layout-2/layout-a.tsx?tsr-split"
     ],
     "assets": [
-      "assets/app-eFpPO7oP.css"
+      "assets/app-CxEV8qsk.css"
     ]
   }
 }

@@ -1,10 +1,10 @@
 {
   "D:/Files/playground/tma-playground/web/app/styles/app.css": {
-    "file": "assets/app-eFpPO7oP.css",
+    "file": "assets/app-CxEV8qsk.css",
     "src": "D:/Files/playground/tma-playground/web/app/styles/app.css"
   },
-  "_client-Bh7on54W.js": {
-    "file": "assets/client-Bh7on54W.js",
+  "_client-DUHRMBPS.js": {
+    "file": "assets/client-DUHRMBPS.js",
     "name": "client",
     "dynamicImports": [
       "app/routes/deferred.tsx?tsr-split",
@@ -16,70 +16,70 @@
       "app/routes/_layout/_layout-2/layout-a.tsx?tsr-split"
     ],
     "assets": [
-      "assets/app-eFpPO7oP.css"
+      "assets/app-CxEV8qsk.css"
     ]
   },
   "app/routes/_layout.tsx?tsr-split": {
-    "file": "assets/_layout-L5hv0NrZ.js",
+    "file": "assets/_layout-BLL8nL30.js",
     "name": "_layout",
     "src": "app/routes/_layout.tsx?tsr-split",
     "isDynamicEntry": true,
     "imports": [
-      "_client-Bh7on54W.js"
+      "_client-DUHRMBPS.js"
     ]
   },
   "app/routes/_layout/_layout-2.tsx?tsr-split": {
-    "file": "assets/_layout-2-tAheFVck.js",
+    "file": "assets/_layout-2-DrppQ0oJ.js",
     "name": "_layout-2",
     "src": "app/routes/_layout/_layout-2.tsx?tsr-split",
     "isDynamicEntry": true,
     "imports": [
-      "_client-Bh7on54W.js"
+      "_client-DUHRMBPS.js"
     ]
   },
   "app/routes/_layout/_layout-2/layout-a.tsx?tsr-split": {
-    "file": "assets/layout-a-Crl7uSqF.js",
+    "file": "assets/layout-a-DuU_sbrt.js",
     "name": "layout-a",
     "src": "app/routes/_layout/_layout-2/layout-a.tsx?tsr-split",
     "isDynamicEntry": true,
     "imports": [
-      "_client-Bh7on54W.js"
+      "_client-DUHRMBPS.js"
     ]
   },
   "app/routes/_layout/_layout-2/layout-b.tsx?tsr-split": {
-    "file": "assets/layout-b-B3Re2oR4.js",
+    "file": "assets/layout-b-CX-bsfP_.js",
     "name": "layout-b",
     "src": "app/routes/_layout/_layout-2/layout-b.tsx?tsr-split",
     "isDynamicEntry": true,
     "imports": [
-      "_client-Bh7on54W.js"
+      "_client-DUHRMBPS.js"
     ]
   },
   "app/routes/deferred.tsx?tsr-split": {
-    "file": "assets/deferred-BH0cdNzs.js",
+    "file": "assets/deferred-BUm3VuwK.js",
     "name": "deferred",
     "src": "app/routes/deferred.tsx?tsr-split",
     "isDynamicEntry": true,
     "imports": [
-      "_client-Bh7on54W.js"
+      "_client-DUHRMBPS.js"
     ]
   },
   "app/routes/index.tsx?tsr-split": {
-    "file": "assets/index-D-yi5EEi.js",
+    "file": "assets/index-CVW4QzeX.js",
     "name": "index",
     "src": "app/routes/index.tsx?tsr-split",
     "isDynamicEntry": true,
     "imports": [
-      "_client-Bh7on54W.js"
+      "_client-DUHRMBPS.js"
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-9W9AZ3fn.js",
+    "file": "assets/client-CKd5VDw8.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
     "imports": [
-      "_client-Bh7on54W.js"
+      "_client-DUHRMBPS.js"
     ]
   }
 }

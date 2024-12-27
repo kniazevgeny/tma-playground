@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router"
 import * as sdk from "@telegram-apps/sdk-react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { ListBox, Select } from "~/components/ui"
+import type { Selection } from "react-aria-components"
 
 export const Route = createFileRoute("/")({
   component: PlaygroundPage,
@@ -14,15 +16,33 @@ function PlaygroundPage() {
     console.log("The app runs outside of the telegram")
   }
 
+  const [sdkKeys, setSdkKeys] = useState<{ name: string; id: number }[]>([
+    { name: "nothing here", id: 0 },
+  ])
+  const [selected, setSelected] = useState<Selection>(new Set([1]))
+  const [selectedPerset, setSelectedPreset] = useState<Selection>(new Set([-1]))
+  const [presets, setPresets] = useState<{ name: string; id: number, exec: () => any }[]>([
+    { name: "main button", id: 0, exec: setBottomButton },
+    { name: "main button + secondary", id: 1, exec: set2BottomButtons },
+    { name: "back button", id: 2, exec: () => {} },
+    { name: "settings button", id: 3, exec: () => {} },
+  ])
+
   useEffect(() => {
-    sdk.init()
+    try {
+      sdk.init()
+    } catch (e) {}
+    setSdkKeys(Object.keys(sdk).map((el, id) => ({ name: el, id: id })))
 
     if (tma) {
       console.log(tma)
-      console.log(sdk)
-      console.log(Object.keys(sdk))
     }
   }, [tma])
+
+  useEffect(() => {
+    if (Array.from(selectedPerset)[0] as number > 0)
+      presets[Array.from(selectedPerset)[0] as number].exec()
+  }, [selectedPerset])
 
   function setBottomButton() {
     if (!tma) {
@@ -38,21 +58,56 @@ function PlaygroundPage() {
       backgroundColor: "#111",
       hasShineEffect: true,
     })
-    console.log(typeof sdk.setMainButtonParams)
-    console.log(typeof sdk.setMainButtonParams({}))
-    // Static TypeScript Type Check
-    type SetMainButtonParamsReturnType = ReturnType<typeof sdk.setMainButtonParams>;
-    // Check if the inferred type matches `number`
-    type IsReturnTypeNumber = SetMainButtonParamsReturnType extends number ? true : false;
-    console.log('IsReturnTypeNumber (Static):', (true as IsReturnTypeNumber)); // true or false
+  }
+
+  function set2BottomButtons() {
+    if (!tma) {
+      alert("The app runs outside of the telegram")
+      return
+    }
+    setBottomButton()
+    sdk.secondaryButton.mount()
+    sdk.setSecondaryButtonParams({
+      isEnabled: false,
+      text: "тест disabled",
+      isVisible: true,
+      textColor: "#fff5e1",
+      backgroundColor: "#111",
+      hasShineEffect: false,
+    })
   }
 
   return (
     <div className="dark pt-4 min-h-screen bg-bg text-fg font-serif flex flex-col justify-center items-center">
       Hello there
-      <div onClick={setBottomButton} className="hover:cursor-pointer">
-        set main button
-      </div>
+      <Select
+        label="Design software"
+        placeholder="Select a software"
+        className="max-w-[400px]"
+      >
+        <Select.Trigger />
+        <Select.List items={sdkKeys}>
+          {(item) => (
+            <Select.Option id={item.id} textValue={item.name}>
+              {item.name}
+            </Select.Option>
+          )}
+        </Select.List>
+      </Select>
+      <ListBox
+        selectedKeys={selectedPerset}
+        onSelectionChange={setSelectedPreset}
+        items={presets}
+        aria-label="SDK Keys"
+        selectionMode="single"
+        className="max-w-[400px]"
+      >
+        {(option) => (
+          <ListBox.Item id={option.id} textValue={option.name}>
+            {option.name}
+          </ListBox.Item>
+        )}
+      </ListBox>
     </div>
   )
 }

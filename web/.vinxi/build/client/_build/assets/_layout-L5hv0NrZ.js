@@ -1,1 +1,0 @@
-import{j as t,O as n}from"./client-Bh7on54W.js";const e=function(){return t.jsxs("div",{className:"p-2",children:[t.jsx("div",{children:"I'm a layout"}),t.jsx("div",{children:t.jsx(n,{})})]})};export{e as component};
