@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router"
-import { setMainButtonParams, useLaunchParams } from "@telegram-apps/sdk-react"
+import { init, setMainButtonParams, useLaunchParams } from "@telegram-apps/sdk-react"
 import { useEffect } from "react"
 
 export const Route = createFileRoute("/")({
@@ -15,6 +15,8 @@ function PlaygroundPage() {
   }
 
   useEffect(() => {
+    init()
+    
     if (tma) {
       console.log(tma)
     }
