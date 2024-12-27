@@ -34,15 +34,14 @@ function PlaygroundPage() {
   useEffect(() => {
     try {
       sdk.init()
+      sdk.miniApp.mount()
 
-      sdk.mainButton.unmount()
-      sdk.secondaryButton.unmount()
+      sdk.unmountMainButton()
+      sdk.unmountSecondaryButton()
       sdk.backButton.hide()
       sdk.backButton.unmount()
       sdk.settingsButton.hide()
       sdk.settingsButton.unmount()
-
-      sdk.miniApp.mount()
     } catch (e) {}
     setSdkKeys(Object.keys(sdk).map((el, id) => ({ name: el, id: id })))
 
