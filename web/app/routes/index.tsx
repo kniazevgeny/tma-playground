@@ -136,7 +136,8 @@ function PlaygroundPage() {
 
   function shareMessage() {
     //@ts-ignore
-    sdk.shareMessage('cuUGXICud6q63eEj')
+    // sdk.shareMessage('cuUGXICud6q63eEj')
+    window.Telegram.WebView.postEvent('web_app_send_prepared_message', false, {id: 'cuUGXICud6q63eEj'});
   }
 
   return (
