@@ -29,6 +29,8 @@ function PlaygroundPage() {
     { name: "back button", id: 2, exec: setBackButton },
     { name: "settings button", id: 3, exec: setSettingsButton },
     { name: "header color orange", id: 4, exec: setHeaderColor },
+    { name: "header color bkg", id: 5, exec: setHeaderColorBkg },
+    { name: "share to stories", id: 6, exec: shareToStories },
   ])
 
   useEffect(() => {
@@ -45,26 +47,12 @@ function PlaygroundPage() {
     }
   }, [tma])
 
-  window.onclose = () => {
-    sdk.unmountMainButton()
-    sdk.unmountSecondaryButton()
-    sdk.backButton.hide()
-    sdk.backButton.unmount()
-    sdk.settingsButton.hide()
-    sdk.settingsButton.unmount()
-  }
-
   useEffect(() => {
     if ((Array.from(selectedPerset)[0] as number) >= 0)
       presets[Array.from(selectedPerset)[0] as number].exec()
   }, [selectedPerset])
 
   function setBottomButton() {
-    if (!tma) {
-      alert("The app runs outside of the telegram")
-      return
-    }
-
     sdk.setMainButtonParams({
       isEnabled: true,
       text: "test",
@@ -78,10 +66,6 @@ function PlaygroundPage() {
   }
 
   function set2BottomButtons() {
-    if (!tma) {
-      alert("The app runs outside of the telegram")
-      return
-    }
     setBottomButton()
     sdk.setSecondaryButtonParams({
       isEnabled: false,
@@ -114,31 +98,37 @@ function PlaygroundPage() {
   }
 
   function setBackButton() {
-    if (!tma) {
-      alert("The app runs outside of the telegram")
-      return
-    }
     sdk.backButton.mount()
     sdk.backButton.show()
     sdk.backButton.onClick(() => sdk.backButton.hide())
   }
 
   function setSettingsButton() {
-    if (!tma) {
-      alert("The app runs outside of the telegram")
-      return
-    }
     sdk.settingsButton.mount()
     sdk.settingsButton.show()
     sdk.settingsButton.onClick(() => alert("settings btn clicked"))
   }
 
   function setHeaderColor() {
-    if (!tma) {
-      alert("The app runs outside of the telegram")
-      return
-    }
     sdk.setMiniAppHeaderColor("#f98e29")
+  }
+
+  function setHeaderColorBkg() {
+    sdk.setMiniAppHeaderColor("#383838")
+  }
+
+  function shareToStories() {
+    sdk.shareStory.ifAvailable("https://images.unsplash.com/photo-1733860694060-e10fabd4e2b1?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=pars-sahin-hDwag975ohY-unsplash.jpg&w=640", {
+      text: "Today was a good day. Love it! Thanks to this public!",
+      widgetLink: {
+        url: "https://t.me/tma_playground_bot",
+        name: "check out this mini-app",
+      },
+    })
+  }
+
+  function shareMessage() {
+    // sdk.
   }
 
   return (
