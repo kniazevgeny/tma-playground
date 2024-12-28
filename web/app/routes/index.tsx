@@ -39,6 +39,12 @@ function PlaygroundPage() {
       sdk.miniApp.mount()
       sdk.mainButton.mount()
       sdk.secondaryButton.mount()
+
+      //@ts-ignore
+      sdk.on('shareMessageSent', (e) => console.log('message sent!'))
+      //@ts-ignore
+      sdk.on('shareMessageFailed', (e: {error: string}) => console.log('message not sent', e.error))
+
     } catch (e) {}
     setSdkKeys(Object.keys(sdk).map((el, id) => ({ name: el, id: id })))
 
@@ -128,7 +134,8 @@ function PlaygroundPage() {
   }
 
   function shareMessage() {
-    // sdk.
+    //@ts-ignore
+    sdk.shareMessage('cuUGXICud6q63eEj')
   }
 
   return (
