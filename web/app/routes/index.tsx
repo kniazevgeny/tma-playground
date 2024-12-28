@@ -31,6 +31,7 @@ function PlaygroundPage() {
     { name: "header color orange", id: 4, exec: setHeaderColor },
     { name: "header color bkg", id: 5, exec: setHeaderColorBkg },
     { name: "share to stories", id: 6, exec: shareToStories },
+    { name: "share message (v1)", id: 7, exec: shareMessage },
   ])
 
   useEffect(() => {
