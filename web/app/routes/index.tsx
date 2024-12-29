@@ -31,7 +31,8 @@ function PlaygroundPage() {
     { name: "header color orange", id: 4, exec: setHeaderColor },
     { name: "header color bkg", id: 5, exec: setHeaderColorBkg },
     { name: "share to stories", id: 6, exec: shareToStories },
-    { name: "share message (v1)", id: 7, exec: shareMessage },
+    { name: "share message (unstable)", id: 7, exec: shareMessage },
+    { name: "forward to", id: 8, exec: forwardMessage },
   ])
 
   useEffect(() => {
@@ -137,6 +138,10 @@ function PlaygroundPage() {
     //@ts-ignore
     // sdk.shareMessage('cuUGXICud6q63eEj')
     window.TelegramWebviewProxy.postEvent('web_app_send_prepared_message', false, {id: 'cuUGXICud6q63eEj'});
+  }
+
+  function forwardMessage() {
+    sdk.openLink('/share/url?url=https://google.com&text=hello%20there')
   }
 
   return (
