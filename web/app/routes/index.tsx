@@ -65,11 +65,10 @@ function PlaygroundPage() {
       text: "test",
       isVisible: true,
       textColor: "#fff5e1",
-      backgroundColor: "#111",
-      hasShineEffect: false,
     })
 
-    sdk.setSecondaryButtonParams({ isVisible: false })
+    if (sdk.isSecondaryButtonEnabled())
+      sdk.setSecondaryButtonParams({ isVisible: false })
   }
 
   function set2BottomButtons() {
