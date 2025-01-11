@@ -12,6 +12,7 @@ function PlaygroundPage() {
   let tma: any = null
   try {
     tma = sdk.useLaunchParams()
+    console.log("launch params", tma)
   } catch (e) {
     console.log("The app runs outside of the telegram")
   }
