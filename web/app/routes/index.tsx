@@ -177,6 +177,7 @@ function PlaygroundPage() {
           </ListBox.Item>
         )}
       </ListBox>
+      <a href="/404">go to /404</a>
       {/* textarea form which ofter editing will trigger onbeforeunload from browser */}
       <textarea
         className="w-full h-full bg-gray-200"
