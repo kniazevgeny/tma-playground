@@ -177,6 +177,15 @@ function PlaygroundPage() {
           </ListBox.Item>
         )}
       </ListBox>
+      {/* textarea form which ofter editing will trigger onbeforeunload from browser */}
+      <textarea
+        className="w-full h-full bg-gray-200"
+        onChange={(e) => {
+          window.onbeforeunload = () => {
+            console.log("onbeforeunload");
+          };
+        }}
+      ></textarea>
     </div>
   )
 }
