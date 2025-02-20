@@ -62,6 +62,7 @@ export const Route = createRootRouteWithContext<{
         href: "/favicon-16x16.png",
       },
       { rel: "manifest", href: "/site.webmanifest", color: "#fffff" },
+      { rel: "serviceworker", href: "/service-worker.js" },
       { rel: "icon", href: "/favicon.ico" },
     ],
   }),

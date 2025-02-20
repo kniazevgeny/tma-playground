@@ -1,7 +1,6 @@
 import { hydrateRoot } from "react-dom/client"
 import { StartClient } from "@tanstack/start"
 import { createRouter } from "./router"
-import "./service-worker"
 
 const router = createRouter()
 
