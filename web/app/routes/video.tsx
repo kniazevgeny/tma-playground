@@ -13,7 +13,7 @@ const VideoCapture = () => {
     <div>
       <input
         type="file"
-        accept="video/*;capture=camcorder"
+        accept="video/*"
         onChange={handleVideoCapture}
       />
     </div>
