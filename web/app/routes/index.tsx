@@ -34,6 +34,7 @@ function PlaygroundPage() {
     { name: "share to stories", id: 6, exec: shareToStories },
     { name: "share message (unstable)", id: 7, exec: shareMessage },
     { name: "forward to", id: 8, exec: forwardMessage },
+    { name: "ask write access", id: 9, exec: askWriteAccess },
   ])
 
   useEffect(() => {
@@ -109,6 +110,11 @@ function PlaygroundPage() {
     sdk.backButton.mount()
     sdk.backButton.show()
     sdk.backButton.onClick(() => sdk.backButton.hide())
+  }
+
+  async function askWriteAccess() {
+    const status = await sdk.requestWriteAccess.ifAvailable();
+    alert(status);
   }
 
   function setSettingsButton() {
